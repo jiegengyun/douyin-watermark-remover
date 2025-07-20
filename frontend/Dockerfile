@@ -1,13 +1,13 @@
 # 构建阶段
-FROM node:16-alpine AS build
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
 # 复制package文件
-COPY package*.json ./
+COPY package.json ./
 
 # 安装依赖
-RUN npm ci
+RUN npm install --production=false
 
 # 复制源代码
 COPY . .
