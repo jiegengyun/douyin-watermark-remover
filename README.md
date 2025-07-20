@@ -46,8 +46,8 @@
 
 1. **克隆项目**
 ```bash
-git clone <repository-url>
-cd douyin无水印解析
+git clone https://github.com/jiegengyun/douyin-watermark-remover.git
+cd douyin-watermark-remover
 ```
 
 2. **后端设置**
@@ -207,7 +207,7 @@ A: 检查防火墙设置，确认端口开放，查看Docker日志。
 
 ## 📞 技术支持
 
-- **Issues**：GitHub Issues
+- **Issues**：[GitHub Issues](https://github.com/jiegengyun/douyin-watermark-remover/issues)
 - **Email**：support@example.com
 - **QQ群**：123456789
 

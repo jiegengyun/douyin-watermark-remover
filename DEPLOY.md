@@ -22,8 +22,8 @@
 ### 步骤1: 克隆项目
 
 ```bash
-git clone <repository-url>
-cd douyin无水印解析
+git clone https://github.com/jiegengyun/douyin-watermark-remover.git
+cd douyin-watermark-remover
 ```
 
 ### 步骤2: 后端部署
@@ -83,8 +83,8 @@ npm start
 
 ```bash
 # 1. 克隆项目
-git clone <repository-url>
-cd douyin无水印解析
+git clone https://github.com/jiegengyun/douyin-watermark-remover.git
+cd douyin-watermark-remover
 
 # 2. 一键启动所有服务
 docker-compose up -d
@@ -154,7 +154,7 @@ sudo chown $USER:$USER /var/www/video-parser
 cd /var/www/video-parser
 
 # 克隆项目
-git clone <repository-url> .
+git clone https://github.com/jiegengyun/douyin-watermark-remover.git .
 
 # 安装Python依赖
 pip3 install -r requirements.txt
@@ -255,7 +255,7 @@ sudo crontab -e
 # 3. 连接服务器，执行上述传统部署步骤
 
 # 或者使用一键部署脚本
-curl -fsSL https://raw.githubusercontent.com/your-repo/deploy.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jiegengyun/douyin-watermark-remover/main/deploy.sh | bash
 ```
 
 #### 宝塔面板部署
@@ -488,7 +488,7 @@ sudo ls -la /etc/letsencrypt/live/your-domain.com/
 
 ### 获取帮助
 
-- **GitHub Issues**: 提交问题和功能请求
+- **GitHub Issues**: [提交问题和功能请求](https://github.com/jiegengyun/douyin-watermark-remover/issues)
 - **文档**: 查看项目README.md
 - **社区**: 加入技术交流群
 
