@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, Input, Button, List, Progress, Tag, Space, message, Modal, Alert } from 'antd';
 import { PlusOutlined, DeleteOutlined, PlayCircleOutlined, PauseCircleOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { parserAPI } from '../utils/api';
