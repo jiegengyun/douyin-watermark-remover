@@ -40,7 +40,7 @@ def get_global_driver():
                 global_driver = webdriver.Chrome(service=service, options=chrome_options)
             else:
                 # 如果找不到ChromeDriver，尝试直接使用Chrome
-                global_driver = webdriver.Chrome(options=chrome_options)
+            global_driver = webdriver.Chrome(options=chrome_options)
             # 设置移动端窗口尺寸
             global_driver.set_window_size(375, 812)
             # 反爬：注入JS隐藏webdriver特征
@@ -80,7 +80,7 @@ class DouyinSeleniumParser:
             chrome_driver_path = os.getenv('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
             if os.path.exists(chrome_driver_path):
                 service = Service(chrome_driver_path)
-                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            self.driver = webdriver.Chrome(service=service, options=chrome_options)
             else:
                 # 如果找不到ChromeDriver，尝试直接使用Chrome
                 self.driver = webdriver.Chrome(options=chrome_options)
