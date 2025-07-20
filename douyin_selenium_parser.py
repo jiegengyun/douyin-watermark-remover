@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from webdriver_manager.chrome import ChromeDriverManager
+import os
 import threading
 import queue
 
@@ -32,7 +32,15 @@ def get_global_driver():
             # 反爬：禁用自动化扩展
             chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
             chrome_options.add_experimental_option('useAutomationExtension', False)
-            global_driver = webdriver.Chrome(options=chrome_options)
+            
+            # 在Docker环境中使用系统安装的ChromeDriver
+            chrome_driver_path = os.getenv('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
+            if os.path.exists(chrome_driver_path):
+                service = Service(chrome_driver_path)
+                global_driver = webdriver.Chrome(service=service, options=chrome_options)
+            else:
+                # 如果找不到ChromeDriver，尝试直接使用Chrome
+                global_driver = webdriver.Chrome(options=chrome_options)
             # 设置移动端窗口尺寸
             global_driver.set_window_size(375, 812)
             # 反爬：注入JS隐藏webdriver特征
@@ -68,10 +76,14 @@ class DouyinSeleniumParser:
             # 禁用图片加载以提高速度
             chrome_options.add_argument('--blink-settings=imagesEnabled=false')
             
-            # 自动下载并设置ChromeDriver
-            service = Service(ChromeDriverManager().install())
-            
-            self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            # 在Docker环境中使用系统安装的ChromeDriver
+            chrome_driver_path = os.getenv('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
+            if os.path.exists(chrome_driver_path):
+                service = Service(chrome_driver_path)
+                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            else:
+                # 如果找不到ChromeDriver，尝试直接使用Chrome
+                self.driver = webdriver.Chrome(options=chrome_options)
             self.wait = WebDriverWait(self.driver, 20)
             
             print("Chrome浏览器设置成功")

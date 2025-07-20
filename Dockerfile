@@ -19,14 +19,12 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add
     && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装ChromeDriver
-RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | awk -F'.' '{print $1}') \
-    && wget -q "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}" -O CHROME_DRIVER_VERSION \
-    && wget -q "https://chromedriver.storage.googleapis.com/$(cat CHROME_DRIVER_VERSION)/chromedriver_linux64.zip" \
+# 安装ChromeDriver（使用固定版本）
+RUN wget -q https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip \
     && unzip chromedriver_linux64.zip \
     && mv chromedriver /usr/local/bin/ \
     && chmod +x /usr/local/bin/chromedriver \
-    && rm chromedriver_linux64.zip CHROME_DRIVER_VERSION
+    && rm chromedriver_linux64.zip
 
 # 复制requirements文件
 COPY requirements.txt .
