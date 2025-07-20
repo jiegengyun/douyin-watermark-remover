@@ -12,8 +12,6 @@ services:
       - ./instance:/app/instance
       - ./logs:/app/logs
     restart: unless-stopped
-    networks:
-      - video-parser-network
 
   # 前端服务
   frontend:
@@ -23,25 +21,4 @@ services:
       - "80:80"
     depends_on:
       - backend
-    restart: unless-stopped
-    networks:
-      - video-parser-network
-
-  # Redis缓存（可选）
-  redis:
-    image: redis:alpine
-    container_name: video-parser-redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    restart: unless-stopped
-    networks:
-      - video-parser-network
-
-volumes:
-  redis_data:
-
-networks:
-  video-parser-network:
-    driver: bridge 
+    restart: unless-stopped 

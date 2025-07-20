@@ -1,5 +1,5 @@
 # 构建阶段
-FROM node:16-alpine as build
+FROM node:16-alpine AS build
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安装依赖
-RUN npm ci --only=production
+RUN npm ci
 
 # 复制源代码
 COPY . .
